@@ -46,5 +46,9 @@ backend/       FastAPI service (scaffolded in Phase 1)
 
 ## Design philosophy
 
-Clean, minimal, dark-mode-first, map-centric. No gradients. No colored emoji.
-Limited borders. Glassmorphism used sparingly. Privacy and safety are core features.
+**Swiss Mono** — a mix of Swiss International Typographic + Minimalist Monochrome:
+black & white with a single functional Swiss Red signal, 0px radius, a visible grid,
+no gradients/glassmorphism/shadows, monochrome icons, and the map running inverted
+(black/white). "A transit map for nightlife." See
+[`design/styles/swiss-mono-hybrid.md`](design/styles/swiss-mono-hybrid.md). Privacy
+and safety are core features.

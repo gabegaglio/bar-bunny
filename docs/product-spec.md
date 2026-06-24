@@ -17,15 +17,18 @@ The experience should feel modern, premium, minimal, and location-centric.
 (Authoritative version lives in [`../CLAUDE.md`](../CLAUDE.md) and
 [`../design/design-system.md`](../design/design-system.md).)
 
-- Clean, modern, minimal UI with heavy whitespace
+Direction: **Swiss Mono** (Swiss International + Minimalist Monochrome) — see
+[`../design/styles/swiss-mono-hybrid.md`](../design/styles/swiss-mono-hybrid.md).
+
+- Clean, objective, minimal UI with heavy whitespace and a visible grid
 - Mobile-first, fast, simple navigation
-- Nightlife aesthetic without feeling flashy
-- Dark mode first
-- **No gradients. No colored emoji. Limited borders.**
-- Glassmorphism where appropriate, never at the expense of readability
-- Smooth, native-feeling animations
-- Large map-focused layouts, floating UI, minimal chrome, hidden navigation where
-  possible, icons integrated directly into layouts, clean typography
+- Black & white with a single functional **Swiss Red** signal (signal-only)
+- **No gradients. No glassmorphism. No drop shadows. No rounded corners (0px).**
+- **No colored emoji** — monochrome line icons only
+- Light vs. dark is semantic: editorial surfaces light, map/night surfaces inverted
+- Snappy 100–200ms animations (no slow/springy motion)
+- Three type voices: Inter (UI), Playfair Display (statements), JetBrains Mono (data)
+- Large map-focused layouts, bordered floating cards, icons integrated into layouts
 
 ---
 
@@ -63,7 +66,7 @@ The primary experience.
 
 **Top:** search icon, location indicator.
 **Center:** interactive map occupying 70–80% of the screen.
-**Bottom:** floating glassmorphic carousel.
+**Bottom:** floating bordered carousel (white card over the inverted map — not glass).
 
 Carousel cards display: bar name, rating, distance, open/closed status, popularity
 indicator.

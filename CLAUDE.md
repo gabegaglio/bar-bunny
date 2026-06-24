@@ -17,31 +17,42 @@ minimal, and location-centric.
 
 These are not suggestions. A change that violates any of these should be rejected.
 
-- **Map-first.** The interactive map occupies 70–80% of the home screen. UI floats
-  over it; it never boxes the map in.
-- **Dark mode first.** Near-black primary background. Glass surfaces are
-  semi-transparent. A single brand accent color — no more.
-- **NO gradients.** Anywhere. Flat surfaces only.
-- **NO colored emoji.** Use monochrome line icons (e.g. Lucide / SF Symbols) only.
-- **Limited borders / no chrome.** Avoid traditional nav bars and tab bars. Integrate
-  icons directly into the screen. Separate content with whitespace and subtle
-  elevation, not boxes and dividers.
-- **Glassmorphism, sparingly.** Allowed on: bottom carousel, route cards, search
-  modal, floating controls. Avoid heavy blur. Readability always wins.
-- **Typography is premium and clean.** Inter / SF Pro / Geist. No decorative fonts.
-- **Heavy whitespace. Smooth, native-feeling animations** (Reanimated).
-- **Floating, map-centric navigation.** Avoid bottom tab bars where possible.
+**Visual direction: Swiss Mono** — a mix of Swiss International Typographic + Minimalist
+Monochrome. "A transit map for nightlife." Full reasoning in
+[`design/styles/swiss-mono-hybrid.md`](design/styles/swiss-mono-hybrid.md); working
+tokens in [`design/design-system.md`](design/design-system.md).
 
-See [`design/design-system.md`](design/design-system.md) for concrete tokens and
+- **Map-first.** The interactive map occupies 70–80% of the home screen. UI sits over
+  it in bordered cards; it never boxes the map in with chrome.
+- **Black & white is the system. One functional signal: Swiss Red `#FF3000`.** Red is
+  used only for true signals (live/critical state, the selected map node, primary CTA)
+  — never decorative, never for long body text.
+- **Light vs. dark is semantic, not a theme toggle.** Editorial surfaces (onboarding,
+  route summary, profile, lists) run light (white/black). The map and night surfaces
+  run **inverted** (black/white). Inversion is also how we emphasize.
+- **NO gradients. NO glassmorphism / blur. NO drop shadows. NO rounded corners (0px).**
+  Depth comes from contrast, border weight, pattern, and inversion only.
+- **NO colored emoji.** Monochrome `lucide-react` line icons only (1–1.5px stroke).
+- **The grid is law and visible.** Thick black section rules, hairline dividers,
+  asymmetric ratios (8:4 / 7:5 / 5:7), strict left alignment, generous negative space.
+- **Three type voices, zoned:** Inter (structure/UI/labels, UPPERCASE), Playfair
+  Display (large editorial statements & pull-quotes), JetBrains Mono (data — distance,
+  ETA, coordinates, stop numbers). No other fonts.
+- **Motion is snappy, 100–200ms,** `ease-out`/`ease-linear`. Color inversions, 90° icon
+  rotation, scale 1.05, -1px lift, grayscale→color on imagery. No spring/cinematic
+  motion. Respect `prefers-reduced-motion`.
+
+See [`design/styles/`](design/styles/) for the full style references and
 [`design/inspiration/`](design/inspiration/) for visual references.
 
 ### Quick review checklist
-- [ ] No gradient anywhere in the diff
+- [ ] No gradient, glassmorphism/blur, or drop shadow anywhere in the diff
+- [ ] No rounded corners (0px radius everywhere)
+- [ ] No color beyond black, white, and the single Swiss Red signal (signal-only use)
 - [ ] No colored emoji; icons are monochrome line icons
-- [ ] No new hard borders / nav-bar chrome
-- [ ] Glass effects limited to the approved surfaces, blur kept readable
-- [ ] Map remains visually dominant on map screens
-- [ ] Fonts are Inter / SF Pro / Geist only
+- [ ] Map remains visually dominant; map/night surfaces use inversion, not glass
+- [ ] Fonts are Inter / Playfair Display / JetBrains Mono only
+- [ ] Motion stays 100–200ms (no slow/springy easing)
 
 ---
 

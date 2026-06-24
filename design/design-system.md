@@ -1,98 +1,138 @@
 # Bar Bunny — Design System
 
-Concrete tokens and component rules. The precedent in [`../CLAUDE.md`](../CLAUDE.md)
-governs; this file makes it buildable. References live in
-[`inspiration/`](inspiration/).
+Working tokens and component rules. The direction is **Swiss Mono** — a mix of Swiss
+International + Minimalist Monochrome. Reasoning and merge decisions live in
+[`styles/swiss-mono-hybrid.md`](styles/swiss-mono-hybrid.md); the precedent is in
+[`../CLAUDE.md`](../CLAUDE.md). References: [`inspiration/`](inspiration/).
+
+> **Pivot:** this replaces the earlier dark/glassmorphic nightlife system.
+> **No glassmorphism. No gradients. No rounded corners. No shadows.** Depth comes from
+> contrast, border weight, pattern, and inversion only.
 
 ---
 
 ## Foundations
 
 ### Color
-Dark mode first. **No gradients. No colored emoji. One accent color, used sparingly.**
+Black and white *are* the system. One functional signal color — **Swiss Red** — used
+only for true signals (live/critical state, selected map node, primary CTA). Never
+decorative, never for long body text.
 
-| Token              | Role                                  | Value (proposed, confirm) |
-| ------------------ | ------------------------------------- | ------------------------- |
-| `bg/primary`       | App background (map underlay)         | near-black `#0A0A0B`      |
-| `surface/glass`    | Glass cards (semi-transparent + blur) | `rgba(20,20,22,0.55)`     |
-| `surface/raised`   | Solid raised surface                  | `#161618`                 |
-| `text/primary`     | Primary text                          | `#F5F5F7`                 |
-| `text/secondary`   | Secondary text                        | `#A1A1AA`                 |
-| `accent`           | Single brand accent (CTAs, selection) | **TBD — confirm hex**     |
-| `state/positive`   | Open now                              | muted green               |
-| `state/muted`      | Closed / inactive                     | `#52525B`                 |
+| Token             | Role                                            | Value      |
+| ----------------- | ----------------------------------------------- | ---------- |
+| `bg`              | Default (editorial) background                  | `#FFFFFF`  |
+| `fg`              | Default text / borders                          | `#000000`  |
+| `bg-invert`       | Map / "night" surface background                | `#000000`  |
+| `fg-invert`       | Text on inverted surfaces                       | `#FFFFFF`  |
+| `muted`           | Secondary background (rhythm)                   | `#F2F2F2`  |
+| `muted-2`         | Alt secondary background                        | `#F5F5F5`  |
+| `secondary-fg`    | Secondary / metadata text                       | `#525252`  |
+| `border`          | Structural borders                              | `#000000`  |
+| `border-light`    | Subtle dividers                                 | `#E5E5E5`  |
+| `signal`          | **Swiss Red** — functional signal only          | `#FF3000`  |
 
-> **TBD:** pick one accent hex that matches the bunny brand (a single warm neon is a
-> good direction). Used only for active/selected states and primary CTAs — never as
-> a fill gradient.
+Light vs. dark is **semantic, not a theme toggle**: editorial surfaces (onboarding,
+route summary, profile, lists) are light; the map and night surfaces are inverted.
 
-### Typography
-Inter (or SF Pro / Geist). No decorative fonts. Premium, highly readable.
+### Typography — three voices, clearly zoned
+- **Inter** — structural/objective voice: labels, UI, headings, data. Weights 400 / 500
+  / 700 / 900. UPPERCASE for labels & most headings.
+- **Playfair Display** — editorial voice: large statements & pull-quotes only.
+  400 + italic (italic emphasis words may sit inside an Inter or Playfair headline).
+- **JetBrains Mono** — data voice: coordinates, distances, ETAs, open-until times, route
+  stop numbers, section numbers.
 
-| Style       | Size / weight        | Use                          |
-| ----------- | -------------------- | ---------------------------- |
-| Display     | 28–32 / 600          | Screen titles (rare)         |
-| Title       | 20–22 / 600          | Card titles, venue names     |
-| Body        | 15–16 / 400–500      | Default text                 |
-| Caption     | 12–13 / 500          | Distance, status, metadata   |
+| Style        | Font / size / weight              | Use                                  |
+| ------------ | --------------------------------- | ------------------------------------ |
+| Display      | Inter or Playfair, `text-7xl`–`9xl` / 900 or 400 | Hero statements (let words be images) |
+| Section head | Inter `text-4xl`–`5xl` / 700–900, UPPERCASE | Section titles                |
+| Title        | Inter `text-xl`–`2xl` / 700       | Card titles, venue names             |
+| Body         | Inter `text-base`–`lg` / 400–500, `leading-relaxed` | Reading text         |
+| Label        | Inter `text-xs` / 500, UPPERCASE, `tracking-widest` | Overlines, controls   |
+| Data         | JetBrains Mono `text-xs`–`sm`     | Distance, ETA, coords, stop numbers  |
+
+Tracking: `tracking-tighter` on large headlines, `tracking-widest` on small labels,
+default on body.
 
 ### Spacing & radius
-- 4px base grid: 4 / 8 / 12 / 16 / 24 / 32.
-- Heavy whitespace; let content breathe over the map.
-- Radius: cards 20–24px, controls/pills 999px (fully rounded), markers circular.
+- 4px grid: 4 / 8 / 12 / 16 / 24 / 32. Generous negative space (`py-24`→`py-32`,
+  cards `p-8`→`p-12`).
+- **Radius: `0px` everywhere.** No exceptions.
 
-### Elevation, not borders
-Separate elements with shadow + glass, **not hard borders**. Avoid 1px dividers and
-nav-bar chrome. If you reach for a border, reconsider.
+### Borders & lines (depth, not shadow)
+Full weight scale: `1px` hairline (`border-light` dividers) → `2px`/`4px` structural
+(black) → `4px`/`8px` section rules. Grid is visible. **No shadows anywhere.**
 
----
-
-## Glassmorphism spec
-
-Use **only** on: bottom carousel, route cards, search modal, floating controls.
-
-- Background: `surface/glass` (semi-transparent dark).
-- Blur: moderate (~20–30 blur radius); **never so heavy it hurts readability**.
-- Subtle inner highlight at top edge optional; no gradients.
-- Always keep text contrast AA+ over the blurred map beneath.
+### Texture / pattern
+Subtle CSS patterns add depth: grid 24px (3%), dots 16px (4%), diagonal 45° (2%), global
+noise (1.5–2%). On inverted map/night surfaces use white-line / radial textures (~3–5%).
+Never apply pattern over red areas.
 
 ---
 
 ## Components
 
+### Buttons
+Rectangular, uppercase, `tracking-widest`, height `h-12`+ (44px min touch target).
+- **Primary** — black bg / white text → inverts (white/black) on hover; switch to red
+  `#FF3000` only for *critical* CTAs.
+- **Secondary** — white + 2px black border → fills black on hover.
+- **Ghost** — text + underline on hover.
+- Motion ≤150ms, no scale. Optional `→` glyph on CTAs.
+
+### Cards / containers
+1–2px black border, white or `#F2F2F2` bg, `p-8`/`p-12`, 0 radius / 0 shadow. **Full
+color inversion on hover** (white→black; white→red for selected/active). Numbered with a
+mono label (`01`, `02`).
+
+### Inputs
+2px black box border or `border-b-2` underline. **Focus thickens to 4px and turns Swiss
+Red.** Italic `#525252` placeholder. No glow.
+
 ### Map markers (nodes)
-| State    | Style                                              |
-| -------- | -------------------------------------------------- |
-| Default  | Small circular monochrome marker                   |
-| Selected | Enlarged, accent ring/highlight, subtle pop anim   |
-| Saved    | Distinct saved glyph (monochrome line icon)        |
-| Visited  | Distinct visited treatment (e.g. filled/dimmed)    |
+| State    | Style                                                            |
+| -------- | ---------------------------------------------------------------- |
+| Default  | Small black square (white outline on the inverted map)           |
+| Selected | Enlarged, turns **red** with a thin red ring                     |
+| Saved    | Distinct monochrome glyph (filled)                               |
+| Visited  | Distinct monochrome glyph (outlined / dimmed)                    |
 
-### Bottom carousel card (glass)
-Bar name (Title) · rating · distance · open/closed (`state/*`) · popularity ·
-**Add to route** action. Horizontally swipeable; selecting pans the map.
+Route line: thick black (white on the inverted map). The map uses a custom monochrome
+Google Maps style (black land, white roads/labels).
 
-### Floating controls
-Search, location, heat-map toggle, profile — circular/pill glass buttons floating
-over the map. No bottom tab bar.
+### Bottom carousel card (NOT glass)
+Bordered white card over the inverted map. Venue name (Title) · rating · distance
+(mono) · open/closed (black/`signal`) · **Add to route**. Swipeable; selecting pans the
+map and reddens the node.
 
 ### Icons
-Monochrome **line icons only** (e.g. Lucide on RN, or SF Symbols). Integrated
-directly into layouts. **Never colored emoji.**
+`lucide-react`, thin stroke (1–1.5px), monochrome, sized 20–24px, often enclosed in a
+black square/circle. Never colored emoji.
 
 ---
 
 ## Motion
-Reanimated. Smooth, native-feeling, purposeful: marker select pop, carousel paging,
-modal/sheet spring, route draw-on. Nothing flashy.
+Instant-to-snappy, **100–200ms**, `ease-out` / `ease-linear`. Color inversions, 90° plus
+rotation, scale 1.0→1.05, -1px lift, grayscale→color (~250ms) on imagery. No spring,
+elastic, parallax, or cinematic slowness. CSS-based; respect `prefers-reduced-motion`.
+
+---
+
+## Imagery
+Venue/editorial photos default to **grayscale**, revealing full color on hover (~250ms)
+often with a subtle `scale-105`. Large, prominent, rectangular (0 radius). Framed by a
+1px black border instead of a shadow.
 
 ---
 
 ## DON'T (enforceable in review)
-- No gradients (anywhere)
+- No gradients
+- No glassmorphism / blur surfaces
+- No rounded corners (0px radius everywhere)
+- No drop shadows (depth = contrast / border / pattern / inversion)
+- No color beyond black, white, and the single Swiss Red signal
+- Red as decoration or long-text color — signal only
 - No colored emoji
-- No hard borders / nav-bar chrome / bottom tab bars
-- No heavy blur that hurts readability
-- No more than one accent color
-- No decorative fonts
-- No UI that shrinks the map below ~70% on the home screen
+- No slow/cinematic or springy motion (keep it 100–200ms)
+- No centered-everything layouts — use the asymmetric Swiss grid
+- No decorative fonts beyond Inter / Playfair Display / JetBrains Mono

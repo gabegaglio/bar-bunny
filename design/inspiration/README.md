@@ -1,9 +1,10 @@
 # UI Inspiration
 
 Visual references that define the Bar Bunny look and feel. Reference these when
-building screens. The aesthetic: large map-focused layouts, floating glassmorphic
-cards, minimal chrome, hidden navigation, icons integrated directly into layouts,
-clean typography, dark mode first.
+building screens. The aesthetic is **Swiss Mono** (see
+[`../styles/swiss-mono-hybrid.md`](../styles/swiss-mono-hybrid.md)): large map-focused
+layouts, bordered floating cards, a visible grid, minimal chrome, icons integrated
+directly into layouts, monochrome with a single Swiss Red signal, inverted map surface.
 
 ## References
 
@@ -21,4 +22,5 @@ here and add a note describing what it demonstrates.
 1. Drop the image in this folder with a descriptive kebab-case name.
 2. Add a short entry above explaining what aspect it demonstrates (layout, type,
    color, motion, etc.).
-3. Keep it on-brand: no gradients, no colored emoji, dark-mode-first.
+3. Keep it on-brand: black/white + Swiss Red signal, no gradients, no glassmorphism,
+   no colored emoji, 0px radius.
