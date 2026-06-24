@@ -24,9 +24,9 @@ tokens in [`design/design-system.md`](design/design-system.md).
 
 - **Map-first.** The interactive map occupies 70–80% of the home screen. UI sits over
   it in bordered cards; it never boxes the map in with chrome.
-- **Black & white is the system. One functional signal: Swiss Red `#FF3000`.** Red is
-  used only for true signals (live/critical state, the selected map node, primary CTA)
-  — never decorative, never for long body text.
+- **Pure monochrome — black & white only. No accent color** (no Swiss Red, no gold).
+  Selection, live state, primary CTAs, and focus are expressed through **inversion,
+  border weight, fill-vs-outline, and scale** — never color.
 - **Light vs. dark is semantic, not a theme toggle.** Editorial surfaces (onboarding,
   route summary, profile, lists) run light (white/black). The map and night surfaces
   run **inverted** (black/white). Inversion is also how we emphasize.
@@ -48,7 +48,7 @@ See [`design/styles/`](design/styles/) for the full style references and
 ### Quick review checklist
 - [ ] No gradient, glassmorphism/blur, or drop shadow anywhere in the diff
 - [ ] No rounded corners (0px radius everywhere)
-- [ ] No color beyond black, white, and the single Swiss Red signal (signal-only use)
+- [ ] No color at all beyond black & white (no accent); state never shown by color alone
 - [ ] No colored emoji; icons are monochrome line icons
 - [ ] Map remains visually dominant; map/night surfaces use inversion, not glass
 - [ ] Fonts are Inter / Playfair Display / JetBrains Mono only

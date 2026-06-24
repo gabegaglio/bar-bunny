@@ -1,7 +1,7 @@
 # Bar Bunny — User Flows
 
 Step-by-step flows for the core experiences. All screens follow the design precedent
-in [`../CLAUDE.md`](../CLAUDE.md): Swiss Mono — black/white + Swiss Red signal, map-
+in [`../CLAUDE.md`](../CLAUDE.md): Swiss Mono — pure black & white (no accent), map-
 dominant, bordered floating cards (no glass), inverted map surface, no chrome.
 
 ---
@@ -35,8 +35,8 @@ dominant, bordered floating cards (no glass), inverted map surface, no chrome.
 
 ## 3. Map node interaction
 
-1. Tap a node → it animates to the **selected** state (enlarged, turns Swiss Red with a
-   thin red ring) and a bordered preview card appears.
+1. Tap a node → it animates to the **selected** state (enlarged, inverted, with a thin
+   ring — the brightest/heaviest marker) and a bordered preview card appears.
 2. Preview shows key info + actions: **Add to route**, **Save**, **View details**.
 3. Node states reflect status:
    - **Default** — small clean marker

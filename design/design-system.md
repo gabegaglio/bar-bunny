@@ -14,9 +14,10 @@ International + Minimalist Monochrome. Reasoning and merge decisions live in
 ## Foundations
 
 ### Color
-Black and white *are* the system. One functional signal color — **Swiss Red** — used
-only for true signals (live/critical state, selected map node, primary CTA). Never
-decorative, never for long body text.
+**Pure monochrome — black and white are the entire palette. No accent color.** There is
+no Swiss Red and no gold. Everything a color would normally signal (selection, live
+state, primary CTAs, focus) is expressed through **inversion, border weight,
+fill-vs-outline, and scale**.
 
 | Token             | Role                                            | Value      |
 | ----------------- | ----------------------------------------------- | ---------- |
@@ -29,7 +30,6 @@ decorative, never for long body text.
 | `secondary-fg`    | Secondary / metadata text                       | `#525252`  |
 | `border`          | Structural borders                              | `#000000`  |
 | `border-light`    | Subtle dividers                                 | `#E5E5E5`  |
-| `signal`          | **Swiss Red** — functional signal only          | `#FF3000`  |
 
 Light vs. dark is **semantic, not a theme toggle**: editorial surfaces (onboarding,
 route summary, profile, lists) are light; the map and night surfaces are inverted.
@@ -66,7 +66,6 @@ Full weight scale: `1px` hairline (`border-light` dividers) → `2px`/`4px` stru
 ### Texture / pattern
 Subtle CSS patterns add depth: grid 24px (3%), dots 16px (4%), diagonal 45° (2%), global
 noise (1.5–2%). On inverted map/night surfaces use white-line / radial textures (~3–5%).
-Never apply pattern over red areas.
 
 ---
 
@@ -74,36 +73,36 @@ Never apply pattern over red areas.
 
 ### Buttons
 Rectangular, uppercase, `tracking-widest`, height `h-12`+ (44px min touch target).
-- **Primary** — black bg / white text → inverts (white/black) on hover; switch to red
-  `#FF3000` only for *critical* CTAs.
+- **Primary** — black bg / white text → inverts (white/black) on hover. *Critical* CTAs
+  gain emphasis from a thick (4px) black frame, not color.
 - **Secondary** — white + 2px black border → fills black on hover.
 - **Ghost** — text + underline on hover.
 - Motion ≤150ms, no scale. Optional `→` glyph on CTAs.
 
 ### Cards / containers
 1–2px black border, white or `#F2F2F2` bg, `p-8`/`p-12`, 0 radius / 0 shadow. **Full
-color inversion on hover** (white→black; white→red for selected/active). Numbered with a
-mono label (`01`, `02`).
+color inversion on hover** (white→black); the selected/active card stays inverted.
+Numbered with a mono label (`01`, `02`).
 
 ### Inputs
-2px black box border or `border-b-2` underline. **Focus thickens to 4px and turns Swiss
-Red.** Italic `#525252` placeholder. No glow.
+2px black box border or `border-b-2` underline. **Focus thickens the border to 4px black**
+plus a 3px black `focus-visible` outline. Italic `#525252` placeholder. No glow.
 
 ### Map markers (nodes)
 | State    | Style                                                            |
 | -------- | ---------------------------------------------------------------- |
 | Default  | Small black square (white outline on the inverted map)           |
-| Selected | Enlarged, turns **red** with a thin red ring                     |
+| Selected | Enlarged, **inverted**, with a thin ring — brightest/heaviest    |
 | Saved    | Distinct monochrome glyph (filled)                               |
 | Visited  | Distinct monochrome glyph (outlined / dimmed)                    |
 
-Route line: thick black (white on the inverted map). The map uses a custom monochrome
-Google Maps style (black land, white roads/labels).
+Route line: the thickest black stroke (white on the inverted map). The map uses a custom
+monochrome Google Maps style (black land, white roads/labels).
 
 ### Bottom carousel card (NOT glass)
 Bordered white card over the inverted map. Venue name (Title) · rating · distance
-(mono) · open/closed (black/`signal`) · **Add to route**. Swipeable; selecting pans the
-map and reddens the node.
+(mono) · open/closed (bold black vs. `secondary-fg`) · **Add to route**. Swipeable;
+selecting pans the map and inverts the node.
 
 ### Icons
 `lucide-react`, thin stroke (1–1.5px), monochrome, sized 20–24px, often enclosed in a
@@ -119,9 +118,11 @@ elastic, parallax, or cinematic slowness. CSS-based; respect `prefers-reduced-mo
 ---
 
 ## Imagery
-Venue/editorial photos default to **grayscale**, revealing full color on hover (~250ms)
-often with a subtle `scale-105`. Large, prominent, rectangular (0 radius). Framed by a
-1px black border instead of a shadow.
+Venue/editorial **photographs** default to **grayscale**, large, prominent, rectangular
+(0 radius), framed by a 1px black border instead of a shadow. Photos may reveal their
+full color on hover (~250ms, optional, with a subtle `scale-105`) — this is the *only*
+place real-world color ever appears, and it applies to photographic content only. The UI
+chrome itself remains strictly black & white; never tint UI or use color to signal state.
 
 ---
 
@@ -130,8 +131,8 @@ often with a subtle `scale-105`. Large, prominent, rectangular (0 radius). Frame
 - No glassmorphism / blur surfaces
 - No rounded corners (0px radius everywhere)
 - No drop shadows (depth = contrast / border / pattern / inversion)
-- No color beyond black, white, and the single Swiss Red signal
-- Red as decoration or long-text color — signal only
+- No color at all beyond black and white (no Swiss Red, no gold, no accent)
+- No state conveyed by color alone — use weight, fill-vs-outline, icon, or label
 - No colored emoji
 - No slow/cinematic or springy motion (keep it 100–200ms)
 - No centered-everything layouts — use the asymmetric Swiss grid

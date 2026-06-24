@@ -22,7 +22,7 @@ Direction: **Swiss Mono** (Swiss International + Minimalist Monochrome) — see
 
 - Clean, objective, minimal UI with heavy whitespace and a visible grid
 - Mobile-first, fast, simple navigation
-- Black & white with a single functional **Swiss Red** signal (signal-only)
+- Pure black & white — **no accent color**; emphasis via inversion, weight, and scale
 - **No gradients. No glassmorphism. No drop shadows. No rounded corners (0px).**
 - **No colored emoji** — monochrome line icons only
 - Light vs. dark is semantic: editorial surfaces light, map/night surfaces inverted

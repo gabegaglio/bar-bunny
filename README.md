@@ -47,7 +47,7 @@ backend/       FastAPI service (scaffolded in Phase 1)
 ## Design philosophy
 
 **Swiss Mono** — a mix of Swiss International Typographic + Minimalist Monochrome:
-black & white with a single functional Swiss Red signal, 0px radius, a visible grid,
+pure black & white (no accent color), 0px radius, a visible grid,
 no gradients/glassmorphism/shadows, monochrome icons, and the map running inverted
 (black/white). "A transit map for nightlife." See
 [`design/styles/swiss-mono-hybrid.md`](design/styles/swiss-mono-hybrid.md). Privacy
