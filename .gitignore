@@ -1,0 +1,43 @@
+# ── Secrets / env ────────────────────────────────────────────────
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+google-maps.key
+clerk.*.key
+
+# ── Node / Expo / React Native ──────────────────────────────────
+node_modules/
+.expo/
+.expo-shared/
+dist/
+web-build/
+*.tsbuildinfo
+npm-debug.*
+yarn-error.log
+.metro-health-check*
+ios/Pods/
+ios/build/
+android/.gradle/
+android/app/build/
+*.keystore
+!debug.keystore
+
+# ── Python / FastAPI ────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# ── OS / editor ─────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
